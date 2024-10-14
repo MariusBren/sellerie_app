@@ -8,8 +8,6 @@
         {% block stylesheets %}
         {% endblock %}
 
-        {% block javascripts %}
-        {% endblock %}
     </head>
     <body>
         {{ include('_header.html.twig') }}
@@ -17,6 +15,8 @@
             <!-- Le padding peut être réduit si la navbar est allégée -->
             {% block body %}{% endblock %}
         </div>
+        {% block javascripts %}
+        {% endblock %}
     </body>
     {{ include('_footer.html.twig') }}
 </html>
