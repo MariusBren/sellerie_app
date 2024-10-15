@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Product;
 use App\Entity\Category;
+use App\Entity\Location;
 use App\Entity\Condition;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -24,6 +25,10 @@ class ProductType extends AbstractType
             ->add('condition_state', EntityType::class, [
                 'class' => Condition::class,
                 'choice_label' => 'conditionName',
+            ])
+            ->add('location', EntityType::class, [
+                'class' => Location::class,
+                'choice_label' => 'section', // créer une fonction anonyme en dessous pour permettre d'afficher aussi la shelf
             ])
         ;
     }
