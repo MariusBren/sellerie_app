@@ -27,6 +27,10 @@ class Product
     #[ORM\JoinColumn(nullable: false)]
     private ?Condition $condition_state = null;
 
+    #[ORM\ManyToOne(inversedBy: 'products')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Location $location = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -76,6 +80,18 @@ class Product
     public function setConditionState(?Condition $condition_state): static
     {
         $this->condition_state = $condition_state;
+
+        return $this;
+    }
+
+    public function getLocation(): ?Location
+    {
+        return $this->location;
+    }
+
+    public function setLocation(?Location $location): static
+    {
+        $this->location = $location;
 
         return $this;
     }

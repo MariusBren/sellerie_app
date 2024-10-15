@@ -6,6 +6,7 @@ use Faker\Factory;
 use DateTimeImmutable;
 use App\Entity\Product;
 use App\Entity\Category;
+use App\Entity\Location;
 use App\Entity\Condition;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -20,7 +21,11 @@ class AppFixtures extends Fixture
         $faker = Factory::create('fr_FR');
 
         $categories = [];
+        $conditions = [];
+        $locations = [];
         $condition_names = ['tout cassé','moyen cassé','un peu cassé','neuf'];
+        $sections_names = ['section alpha','section beta','section delta'];
+        $shelves_names = ['étagère n°1','étagère n°2','étagère n°3'];
 
         // Création des catégories - début
         for ($p=0; $p < mt_rand(5, 10); $p++) {
@@ -46,6 +51,19 @@ class AppFixtures extends Fixture
         }
         // Création des états - fin
 
+        // Création des emplacements - début
+        for ($p=0; $p < mt_rand(5, 10); $p++) {
+
+            $location = new Location();
+            $location->setSection($faker->word());
+            $location->setShelf($faker->word());
+            $manager->persist($location);
+
+            $locations[] = $location;
+
+        }
+        // Création des emplacements - fin
+
         // Création des produits - début
         for ($p=0; $p < mt_rand(50, 100); $p++) {
 
@@ -54,6 +72,7 @@ class AppFixtures extends Fixture
             $product->setDescription($faker->sentence());
             $product->setCategory($faker->randomElement($categories));
             $product->setConditionState($faker->randomElement($conditions));
+            $product->setLocation($faker->randomElement($locations));
             $manager->persist($product);
         }
         // Création des produits - fin
