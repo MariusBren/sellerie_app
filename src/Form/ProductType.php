@@ -28,7 +28,9 @@ class ProductType extends AbstractType
             ])
             ->add('location', EntityType::class, [
                 'class' => Location::class,
-                'choice_label' => 'section', // créer une fonction anonyme en dessous pour permettre d'afficher aussi la shelf
+                'choice_label' => function (Location $location) {
+                    return $location->getShelf() ? $location->getSection() . ' - ' . $location->getShelf() : $location->getSection();
+                },
             ])
         ;
     }
