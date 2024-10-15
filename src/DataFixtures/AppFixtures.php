@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use Faker\Factory;
+use App\Entity\User;
 use DateTimeImmutable;
 use App\Entity\History;
 use App\Entity\Product;
@@ -15,6 +16,11 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
 {
+    private UserPasswordHasherInterface $hasher;
+
+    public function __construct(UserPasswordHasherInterface $hasher) {
+        $this->hasher = $hasher;
+    }
 
     public function load(ObjectManager $manager): void
     {
@@ -94,6 +100,27 @@ class AppFixtures extends Fixture
             $manager->persist($history);
         }
         // Création des historiques - fin
+
+        // Création des utilisateurs - début
+        for ($u=0; $u < 5; $u++) {
+
+            $user = new User;
+            $password = $this->hasher->hashPassword($user, 'password');
+
+            // Créer 1 admin et 4 utilisateurs
+            if ($u==0) {
+                $user->setRoles(["ROLE_ADMIN"])
+                ->setEmail("admin@test.com");
+            } else {
+                $user->setEmail($faker->email())
+                ->setRoles([]);
+            }
+
+            $user->setPassword($password);
+
+            $manager->persist($user);   
+        }
+        // Création des utilisateurs - fin
 
         $manager->flush();
         
