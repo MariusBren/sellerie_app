@@ -19,6 +19,44 @@
                 <th>Description</th>
                 <td>{{ product.description }}</td>
             </tr>
+            <tr>
+                <th>Category</th>
+                <td>{{ product.getCategory().getCategoryName() }}</td>
+            </tr>
+            <tr>
+                <th>Condition</th>
+                <td>{{ product.getConditionState().getConditionName() }}</td>
+            </tr>
+            <tr>
+                <th>Location</th>
+                <td>{{ product.getLocation().getSection() }}, {{ product.getLocation().getShelf() }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Last tracked histories</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Has returned ?</th>
+                <th>Description</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for history in product.getHistories() %}
+                <tr>
+                    <td>{{ history.isBack ? 'Yes' : 'No' }}</td>
+                    <td>{{ history.description }}</td>
+                    <td>{{ history.startDate|date('Y-m-d H:i') }}</td>
+                    <td>{{ history.endDate|date('Y-m-d H:i') }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">No histories found.</td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 

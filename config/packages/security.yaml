@@ -36,12 +36,13 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/user, roles: ROLE_ADMIN }
         - { path: ^/history, roles: ROLE_USER }
         - { path: ^/condition, roles: ROLE_USER }
         - { path: ^/location, roles: ROLE_USER }
         - { path: ^/category/create, roles: ROLE_USER }
         - { path: ^/category/\d+/edit, roles: ROLE_USER }
-        - { path: ^/category/\d+/delete, roles: ROLE_USER }
+        - { path: ^/category/\d+, roles: ROLE_USER, methods: POST }
 
 
 when@test:
