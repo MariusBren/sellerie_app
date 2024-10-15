@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
@@ -30,6 +32,17 @@ class Product
     #[ORM\ManyToOne(inversedBy: 'products')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Location $location = null;
+
+    /**
+     * @var Collection<int, History>
+     */
+    #[ORM\OneToMany(targetEntity: History::class, mappedBy: 'product')]
+    private Collection $histories;
+
+    public function __construct()
+    {
+        $this->histories = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -92,6 +105,36 @@ class Product
     public function setLocation(?Location $location): static
     {
         $this->location = $location;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, History>
+     */
+    public function getHistories(): Collection
+    {
+        return $this->histories;
+    }
+
+    public function addHistory(History $history): static
+    {
+        if (!$this->histories->contains($history)) {
+            $this->histories->add($history);
+            $history->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHistory(History $history): static
+    {
+        if ($this->histories->removeElement($history)) {
+            // set the owning side to null (unless already changed)
+            if ($history->getProduct() === $this) {
+                $history->setProduct(null);
+            }
+        }
 
         return $this;
     }
