@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use Faker\Factory;
 use DateTimeImmutable;
+use App\Entity\History;
 use App\Entity\Product;
 use App\Entity\Category;
 use App\Entity\Location;
@@ -23,6 +24,7 @@ class AppFixtures extends Fixture
         $categories = [];
         $conditions = [];
         $locations = [];
+        $products = [];
         $condition_names = ['tout cassé','moyen cassé','un peu cassé','neuf'];
         $sections_names = ['section alpha','section beta','section delta'];
         $shelves_names = ['étagère n°1','étagère n°2','étagère n°3'];
@@ -31,7 +33,7 @@ class AppFixtures extends Fixture
         for ($p=0; $p < mt_rand(5, 10); $p++) {
 
             $category = new Category();
-            $category->setCategoryName($faker->word());
+            $category->setCategoryName($faker->colorName());
             $manager->persist($category);
 
             $categories[] = $category;
@@ -74,8 +76,24 @@ class AppFixtures extends Fixture
             $product->setConditionState($faker->randomElement($conditions));
             $product->setLocation($faker->randomElement($locations));
             $manager->persist($product);
+
+            $products[] = $product;
         }
         // Création des produits - fin
+
+        // Création des historiques - début
+        for ($p=0; $p < mt_rand(5, 10); $p++) {
+
+            $history = new History();
+            $history->setProduct($faker->randomElement($products));
+            $history->setDescription($faker->sentence());
+            $history->setStartDate(new \DateTimeImmutable());
+            $history->setEndDate(DateTimeImmutable::createFromMutable($faker->dateTimeBetween('now', '6 months')));
+            $history->setCustomer($faker->lastname());
+            $history->setBack($faker->boolean());
+            $manager->persist($history);
+        }
+        // Création des historiques - fin
 
         $manager->flush();
         
