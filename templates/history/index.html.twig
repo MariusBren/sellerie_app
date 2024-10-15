@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}History index{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="//cdn.datatables.net/2.1.7/css/dataTables.dataTables.min.css">
+{% endblock %}
+
+{% block body %}
+    <h1>History index</h1>
+
+    <table class="table table-stripped table-bordered" id="myTable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Product</th>
+                <th>Start_date</th>
+                <th>End_date</th>
+                <th>Customer</th>
+                <th>Is_back</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for history in histories %}
+            <tr>
+                <td>{{ history.id }}</td>
+                <td>{{ history.getProduct().getProductName() }}</td>
+                <td>{{ history.startDate ? history.startDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ history.endDate ? history.endDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ history.customer }}</td>
+                <td>{{ history.isBack ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_history_show', {'id': history.id}) }}">show</a>
+                    <a href="{{ path('app_history_edit', {'id': history.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_history_new') }}">Create new</a>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="//cdn.datatables.net/2.1.7/js/dataTables.min.js"></script>
+    <script>
+        let table = new DataTable('#myTable');
+    </script>
+{% endblock %}

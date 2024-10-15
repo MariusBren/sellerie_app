@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}History{% endblock %}
+
+{% block body %}
+    <h1>History</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ history.id }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ history.description }}</td>
+            </tr>
+            <tr>
+                <th>Start_date</th>
+                <td>{{ history.startDate ? history.startDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>End_date</th>
+                <td>{{ history.endDate ? history.endDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Customer</th>
+                <td>{{ history.customer }}</td>
+            </tr>
+            <tr>
+                <th>Is_back</th>
+                <td>{{ history.isBack ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_history_index') }}">back to list</a>
+
+    <a href="{{ path('app_history_edit', {'id': history.id}) }}">edit</a>
+
+    {{ include('history/_delete_form.html.twig') }}
+{% endblock %}
