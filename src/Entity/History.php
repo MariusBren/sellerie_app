@@ -31,7 +31,7 @@ class History
     private ?string $customer = null;
 
     #[ORM\Column]
-    private ?bool $is_back = null;
+    private ?bool $is_back = false;
 
     public function getId(): ?int
     {

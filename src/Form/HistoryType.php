@@ -22,7 +22,6 @@ class HistoryType extends AbstractType
                 'widget' => 'single_text',
             ])
             ->add('customer')
-            ->add('is_back')
             ->add('product', EntityType::class, [
                 'class' => Product::class,
                 'choice_label' => 'productName',
