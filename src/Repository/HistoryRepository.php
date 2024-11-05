@@ -16,6 +16,25 @@ class HistoryRepository extends ServiceEntityRepository
         parent::__construct($registry, History::class);
     }
 
+    public function countOngoing(): int
+    {
+        return (int) $this->createQueryBuilder('history')
+            ->select('COUNT(history.id)')
+            ->where('history.is_back = 0')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function countLate(): int
+    {
+        return (int) $this->createQueryBuilder('history')
+            ->select('COUNT(history.id)')
+            ->where('history.end_date < :currentDate')
+            ->setParameter('currentDate', new \DateTime())
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
     //    /**
     //     * @return History[] Returns an array of History objects
     //     */

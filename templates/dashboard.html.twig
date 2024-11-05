@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product index{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block body %}
+    <h1>Dashboard</h1>
+    <h2>Nombre de produits : {{ productAllCount }}</h2>
+    <h2>Nombre de produits cassés : {{ productBrokenCount }}</h2>
+    <h2>Nombre de prêts total : {{ historyAllCount }}</h2>
+    <h2>Nombre de prêts en cours : {{ historyOngoingCount }}</h2>
+    <h2>Nombre de prêts en retard : {{ historyLateCount }}</h2>
+    <h2>Nombre de catégories : {{ categoryAllCount }}</h2>
+
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

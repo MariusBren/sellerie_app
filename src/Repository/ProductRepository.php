@@ -16,6 +16,15 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
+    public function countBroken(): int
+    {
+        return (int) $this->createQueryBuilder('product')
+            ->select('COUNT(product.id)')
+            ->where('product.condition_state = 17')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
     //    /**
     //     * @return Product[] Returns an array of Product objects
     //     */
