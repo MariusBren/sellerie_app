@@ -4,12 +4,13 @@ namespace App\Controller;
 
 use App\Entity\History;
 use App\Form\HistoryType;
+use App\Form\ReturnHistoryType;
 use App\Repository\HistoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/history')]
 final class HistoryController extends AbstractController
@@ -77,5 +78,38 @@ final class HistoryController extends AbstractController
         }
 
         return $this->redirectToRoute('app_history_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/{id}/return', name: 'app_history_return', methods: ['GET', 'POST'])]
+    public function return(Request $request, History $history, EntityManagerInterface $entityManager): Response
+    {
+        // Vérifier que l'historique n'ai pas déjà été retourné
+        if ($history->isBack()) {
+            $this->addFlash('error', 'This history has already been returned.');
+            return $this->redirectToRoute('app_history_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        $form = $this->createForm(ReturnHistoryType::class, $history);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $product = $history->getProduct();
+            $history->setBack(true);
+
+            $entityManager->persist($history);
+            $entityManager->persist($product);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'The history has been successfully returned, and the product condition has been updated.');
+
+            return $this->redirectToRoute('app_history_show', ['id' => $product->getId()]);
+        }
+
+        // Rendre la vue avec le formulaire
+        return $this->render('history/return.html.twig', [
+            'history' => $history,
+            'form' => $form,
+        ]);
     }
 }

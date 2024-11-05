@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Return History{% endblock %}
+
+{% block body %}
+    <h2>Product: {{ history.product.productName }}</h2>
+    <h3>History Description: {{ history.description }}</h3>
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+    {% for message in app.flashes('error') %}
+        <div class="alert alert-danger">{{ message }}</div>
+    {% endfor %}
+
+    {{ include('history/_form.html.twig', {'button_label': 'Return'}) }}
+
+        <a href="{{ path('app_history_index') }}">back to list</a>
+
+    {{ include('history/_delete_form.html.twig') }}
+
+    <a href="{{ path('app_history_show', {'id': history.id}) }}" class="btn btn-secondary">Back to Product</a>
+{% endblock %}
