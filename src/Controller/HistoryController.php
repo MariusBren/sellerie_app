@@ -101,9 +101,7 @@ final class HistoryController extends AbstractController
             $entityManager->persist($product);
             $entityManager->flush();
 
-            $this->addFlash('success', 'The history has been successfully returned, and the product condition has been updated.');
-
-            return $this->redirectToRoute('app_history_show', ['id' => $product->getId()]);
+            return $this->redirectToRoute('app_history_index', [], Response::HTTP_SEE_OTHER);
         }
 
         // Rendre la vue avec le formulaire
