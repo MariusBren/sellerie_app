@@ -6,12 +6,12 @@
                     <ul class="flex font-semibold justify-between">
                         <!-- Active Link = text-emerald-500
                         Inactive Link = hover:text-emerald-500 -->
-                        <li class="md:px-4 md:py-2 hover:text-emerald-400"><a href="./product">Produits</a></li>
-                        <li class="md:px-4 md:py-2 hover:text-emerald-400"><a href="./category">Catégories</a></li>
+                        <li class="md:px-4 md:py-2 hover:text-emerald-400"><a href="{{ path('app_product_index') }}">Produits</a></li>
+                        <li class="md:px-4 md:py-2 hover:text-emerald-400"><a href="{{ path('app_category_index') }}">Catégories</a></li>
                         {% if app.user %}
-                            <li class="md:px-4 md:py-2 hover:text-emerald-400"><a href="./location">Emplacements</a></li>
-                            <li class="md:px-4 md:py-2 hover:text-emerald-400"><a href="./history">Historiques</a></li>
-                            <li class="md:px-4 md:py-2 hover:text-emerald-400"><a href="./dashboard">Dashboard</a></li>
+                            <li class="md:px-4 md:py-2 hover:text-emerald-400"><a href="{{ path('app_location_index') }}">Emplacements</a></li>
+                            <li class="md:px-4 md:py-2 hover:text-emerald-400"><a href="{{ path('app_history_index') }}">Prêts/Historiques</a></li>
+                            <li class="md:px-4 md:py-2 hover:text-emerald-400"><a href="{{ path('app_dashboard') }}">Dashboard</a></li>
                         {% endif %}
                         {% if app.user and is_granted('ROLE_ADMIN') %}
                             <li class="md:px-4 md:py-2 hover:text-emerald-400"><a href="./user">Utilisateurs</a></li>
