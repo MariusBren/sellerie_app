@@ -19,6 +19,7 @@
                 <th>Customer</th>
                 <th>Is_back</th>
                 <th>actions</th>
+
             </tr>
         </thead>
         <tbody>
@@ -33,6 +34,11 @@
                 <td>
                     <a href="{{ path('app_history_show', {'id': history.id}) }}">show</a>
                     <a href="{{ path('app_history_edit', {'id': history.id}) }}">edit</a>
+                    {% if history.isBack == false %}
+                        <a href="{{ path('app_history_return', {'id': history.id })}}">return</a>
+                    {% else %}
+                        <p>Product already returned</p>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
