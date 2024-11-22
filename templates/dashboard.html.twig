@@ -6,14 +6,36 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Dashboard</h1>
-    <h2>Nombre de produits : {{ productAllCount }}</h2>
-    <h2>Nombre de produits cassés : {{ productBrokenCount }}</h2>
-    <h2>Nombre de prêts total : {{ historyAllCount }}</h2>
-    <h2>Nombre de prêts en cours : {{ historyOngoingCount }}</h2>
-    <h2>Nombre de prêts en retard : {{ historyLateCount }}</h2>
-    <h2>Nombre de catégories : {{ categoryAllCount }}</h2>
+<div class="flex flex-col items-center">
+    <h1 class="my-6 text-4xl font-bold text-gray-800">Dashboard</h1>
 
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6 w-full max-w-6xl">
+        <div class="bg-zinc-800 rounded-lg shadow p-6 text-center">
+            <h2 class="text-lg font-medium text-white">Nombre de produits</h2>
+            <p class="text-3xl font-bold text-indigo-400 mt-2">{{ productAllCount }}</p>
+        </div>
+        <div class="bg-zinc-800 rounded-lg shadow p-6 text-center">
+            <h2 class="text-lg font-medium text-white">Nombre de produits cassés</h2>
+            <p class="text-3xl font-bold text-red-400 mt-2">{{ productBrokenCount }}</p>
+        </div>
+        <div class="bg-zinc-800 rounded-lg shadow p-6 text-center">
+            <h2 class="text-lg font-medium text-white">Nombre de prêts total</h2>
+            <p class="text-3xl font-bold text-green-400 mt-2">{{ historyAllCount }}</p>
+        </div>
+        <div class="bg-zinc-800 rounded-lg shadow p-6 text-center">
+            <h2 class="text-lg font-medium text-white">Nombre de prêts en cours</h2>
+            <p class="text-3xl font-bold text-yellow-400 mt-2">{{ historyOngoingCount }}</p>
+        </div>
+        <div class="bg-zinc-800 rounded-lg shadow p-6 text-center">
+            <h2 class="text-lg font-medium text-white">Nombre de prêts en retard</h2>
+            <p class="text-3xl font-bold text-red-400 mt-2">{{ historyLateCount }}</p>
+        </div>
+        <div class="bg-zinc-800 rounded-lg shadow p-6 text-center">
+            <h2 class="text-lg font-medium text-white">Nombre de catégories</h2>
+            <p class="text-3xl font-bold text-blue-400 mt-2">{{ categoryAllCount }}</p>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block javascripts %}
