@@ -1,0 +1,90 @@
+body >  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 2em;
+    color: #444;
+}
+
+.table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.table th {
+    background-color: rgb(39 39 42);
+    color: white;
+    font-weight: bold;
+    text-align: left;
+    padding: 12px;
+}
+
+.table td {
+    padding: 10px;
+    text-align: left;
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.table tr:hover {
+    background-color: #f1f5ff;
+}
+
+.table td a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: rgb(16 185 129);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.table td a:hover {
+    background-color: rgb(5 150 105);
+}
+
+.table td[colspan="7"] {
+    text-align: center;
+    font-style: italic;
+    color: #666;
+    padding: 20px 0;
+}
+
+body > a, .index-create {
+    display: inline-block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: rgb(16 185 129);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+body > a:hover, .index-create:hover {
+    background-color: rgb(5 150 105);
+}
+
+#myTable_wrapper {
+    width: 90%;
+    margin: 20px auto;
+}
+
+.index-create {
+    margin-bottom: 20px;
+    margin-left: 5%;
+}
