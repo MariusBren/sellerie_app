@@ -2,10 +2,14 @@
 
 {% block title %}New Location{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/form.css') }}">
+{% endblock %}
+
 {% block body %}
     <h1>Create new Location</h1>
 
     {{ include('location/_form.html.twig') }}
 
-    <a href="{{ path('app_location_index') }}">back to list</a>
+    <a class="back-btn" href="{{ path('app_location_index') }}">back to list</a>
 {% endblock %}

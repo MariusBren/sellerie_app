@@ -1,0 +1,102 @@
+h1 {
+    text-align: center;
+    margin: 15px 0;
+    font-size: 2em;
+    color: #2c3e50;
+    letter-spacing: 0.8px;
+}
+
+.table {
+    width: 50%;
+    margin: 15px auto;
+    border-collapse: separate;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.table th {
+    background-color: #fff;
+    color: #555;
+    font-weight: bold;
+    text-align: left;
+    padding: 10px;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.table td {
+    padding: 8px;
+    text-align: left;
+    background-color: #fff;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.table td a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 4px;
+    background-color: rgb(16 185 129);
+    font-size: 0.85em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.table td a:hover {
+    background-color: rgb(5 150 105);
+}
+
+body > a, .edit-btn {
+    display: inline-block;
+    margin: 10px 5px;
+    padding: 10px 18px;
+    background-color: rgb(16 185 129);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+body > a:hover, .edit-btn:hover {
+    background-color: rgb(5 150 105);
+}
+
+form {
+    display: inline-block;
+}
+
+form button {
+    padding: 10px 18px;
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.85em;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #c0392b;
+}
+
+.back-btn {
+    margin-bottom: 20px;
+    margin-left: 5%;
+}
+
+.edit-btn {
+    margin-left : 15%;
+}
+
+.back-btn:hover {
+    color: rgb(5 150 105);
+}

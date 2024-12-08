@@ -2,10 +2,14 @@
 
 {% block title %}New Product{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/form.css') }}">
+{% endblock %}
+
 {% block body %}
     <h1>Create new Product</h1>
 
     {{ include('product/_form.html.twig') }}
 
-    <a href="{{ path('app_product_index') }}">back to list</a>
+    <a class="back-btn" href="{{ path('app_product_index') }}">back to list</a>
 {% endblock %}

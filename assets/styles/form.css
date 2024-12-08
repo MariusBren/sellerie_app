@@ -1,0 +1,81 @@
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 2.2em;
+    color: #34495e;
+    letter-spacing: 1px;
+}
+
+
+h2, h3 {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 1.8em;
+    color: #34495e;
+    letter-spacing: 1px;
+}
+
+form {
+    width: 50%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ecf0f1;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form .form-group {
+    margin-bottom: 15px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+form input, form select, form textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.9em;
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+form input:focus, form select:focus, form textarea:focus {
+    outline: none;
+    border-color: rgb(16 185 129);
+    box-shadow: 0 0 5px rgba(26, 188, 156, 0.5);
+}
+
+form button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    background-color: rgb(16 185 129);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+form button:hover {
+    background-color: rgb(5 150 105);
+    transform: scale(1.02);
+}
+
+.back-btn {
+    margin-bottom: 20px;
+    margin-left: 5%;
+}
+
+.back-btn:hover {
+    color: rgb(5 150 105);
+}

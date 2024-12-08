@@ -2,10 +2,14 @@
 
 {% block title %}New History{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/form.css') }}">
+{% endblock %}
+
 {% block body %}
     <h1>Create new History</h1>
 
     {{ include('history/_form.html.twig') }}
 
-    <a href="{{ path('app_history_index') }}">back to list</a>
+    <a class="back-btn" href="{{ path('app_history_index') }}">back to list</a>
 {% endblock %}
