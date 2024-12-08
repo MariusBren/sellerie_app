@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use Faker\Factory;
 use App\Entity\User;
+use App\Entity\Repair;
 use DateTimeImmutable;
 use App\Entity\History;
 use App\Entity\Product;
@@ -100,6 +101,18 @@ class AppFixtures extends Fixture
             $manager->persist($history);
         }
         // Création des historiques - fin
+
+        // Création des réparations - début
+        for ($p=0; $p < mt_rand(5, 10); $p++) {
+
+            $history = new Repair();
+            $history->setProduct($faker->randomElement($products));
+            $history->setDescription($faker->sentence());
+            $history->setDate(new \DateTime());
+            $history->setDone($faker->boolean());
+            $manager->persist($history);
+        }
+        // Création des réparations - fin
 
         // Création des utilisateurs - début
         for ($u=0; $u < 5; $u++) {

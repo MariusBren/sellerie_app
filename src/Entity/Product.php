@@ -39,6 +39,12 @@ class Product
     #[ORM\OneToMany(targetEntity: History::class, mappedBy: 'product')]
     private Collection $histories;
 
+    /**
+     * @var Collection<int, Repair>
+     */
+    #[ORM\OneToMany(targetEntity: Repair::class, mappedBy: 'product')]
+    private Collection $repairs;
+
     public function __construct()
     {
         $this->histories = new ArrayCollection();
@@ -133,6 +139,36 @@ class Product
             // set the owning side to null (unless already changed)
             if ($history->getProduct() === $this) {
                 $history->setProduct(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Repair>
+     */
+    public function getRepairs(): Collection
+    {
+        return $this->repairs;
+    }
+
+    public function addRepair(Repair $repairs): static
+    {
+        if (!$this->repairs->contains($repair)) {
+            $this->repairs->add($repair);
+            $repair->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRepair(Repair $repair): static
+    {
+        if ($this->repairs->removeElement($repair)) {
+            // set the owning side to null (unless already changed)
+            if ($repair->getProduct() === $this) {
+                $repair->setProduct(null);
             }
         }
 
