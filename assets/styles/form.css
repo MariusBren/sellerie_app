@@ -79,3 +79,11 @@ form button:hover {
 .back-btn:hover {
     color: rgb(5 150 105);
 }
+
+.logout-link {
+    color: #e74c3c;
+}
+
+.logout-link:hover {
+    color: #c0392b;
+}

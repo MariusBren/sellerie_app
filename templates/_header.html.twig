@@ -14,13 +14,13 @@
                             <li class="md:px-4 md:py-2 hover:text-emerald-400"><a href="{{ path('app_dashboard') }}">Dashboard</a></li>
                         {% endif %}
                         {% if app.user and is_granted('ROLE_ADMIN') %}
-                            <li class="md:px-4 md:py-2 hover:text-emerald-400"><a href="./user">Utilisateurs</a></li>
+                            <li class="md:px-4 md:py-2 hover:text-emerald-400"><a href="{{ path('app_dashboard') }}">Utilisateurs</a></li>
                         {% endif %}
                     </ul>
                 </div>
                 <div class="order-2 md:order-3">
                     {% if app.user %}
-                        <a href="./logout">
+                        <a href="{{ path('app_logout') }}">
                             <button class="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-gray-50 rounded-xl flex items-center gap-2">
                                 <!-- Heroicons - Login Solid -->
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -30,7 +30,7 @@
                             </button>
                         </a>
                     {% else %}
-                        <a href="./login">
+                        <a href="{{ path('app_login') }}">
                             <button class="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-gray-50 rounded-xl flex items-center gap-2">
                                 <!-- Heroicons - Login Solid -->
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
