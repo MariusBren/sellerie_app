@@ -11,6 +11,7 @@
                         {% if app.user %}
                             <li class="md:px-4 md:py-2 hover:text-emerald-400"><a href="{{ path('app_location_index') }}">Emplacements</a></li>
                             <li class="md:px-4 md:py-2 hover:text-emerald-400"><a href="{{ path('app_history_index') }}">Prêts/Historiques</a></li>
+                            <li class="md:px-4 md:py-2 hover:text-emerald-400"><a href="{{ path('app_repair_index') }}">Réparations</a></li>
                             <li class="md:px-4 md:py-2 hover:text-emerald-400"><a href="{{ path('app_dashboard') }}">Dashboard</a></li>
                         {% endif %}
                         {% if app.user and is_granted('ROLE_ADMIN') %}

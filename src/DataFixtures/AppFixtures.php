@@ -110,6 +110,7 @@ class AppFixtures extends Fixture
             $history->setDescription($faker->sentence());
             $history->setDate(new \DateTime());
             $history->setDone($faker->boolean());
+            $history->setCost(mt_rand(5, 5000));
             $manager->persist($history);
         }
         // Création des réparations - fin

@@ -27,6 +27,9 @@ class Repair
     #[ORM\Column]
     private ?bool $is_done = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $cost = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -76,6 +79,18 @@ class Repair
     public function setDone(bool $is_done): static
     {
         $this->is_done = $is_done;
+
+        return $this;
+    }
+
+    public function getCost(): ?int
+    {
+        return $this->cost;
+    }
+
+    public function setCost(?int $cost): static
+    {
+        $this->cost = $cost;
 
         return $this;
     }
