@@ -1,14 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Return History{% endblock %}
+{% block title %}Finish Repair{% endblock %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('styles/form.css') }}">
 {% endblock %}
 
 {% block body %}
-    <h2>Product: {{ history.product.productName }}</h2>
-    <h3>History Description: {{ history.description }}</h3>
+    <h2>Product: {{ repair.product.productName }}</h2>
+    <h3>Repair Description: {{ repair.description }}</h3>
+    <h3>Repair Cost: {{ repair.cost }}</h3>
 
     {% for message in app.flashes('success') %}
         <div class="alert alert-success">{{ message }}</div>
@@ -17,7 +18,7 @@
         <div class="alert alert-danger">{{ message }}</div>
     {% endfor %}
 
-    {{ include('history/_form.html.twig', {'button_label': 'Return'}) }}
+    {{ include('repair/_form.html.twig', {'button_label': 'Finish'}) }}
 
-    <a class="back-btn" href="{{ path('app_history_show', {'id': history.id}) }}" class="btn btn-secondary">back to history</a>
+    <a class="back-btn" href="{{ path('app_repair_show', {'id': repair.id}) }}" class="btn btn-secondary">back to repair</a>
 {% endblock %}

@@ -32,6 +32,11 @@
                 <td>
                     <a href="{{ path('app_repair_show', {'id': repair.id}) }}">show</a>
                     <a href="{{ path('app_repair_edit', {'id': repair.id}) }}">edit</a>
+                    {% if repair.isDone == false %}
+                        <a href="{{ path('app_repair_finish', {'id': repair.id })}}">finish</a>
+                    {% else %}
+                        <p>Product already repared</p>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}

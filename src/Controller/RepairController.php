@@ -4,12 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Repair;
 use App\Form\RepairType;
+use App\Form\FinishRepairType;
 use App\Repository\RepairRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/repair')]
 final class RepairController extends AbstractController
@@ -77,5 +78,36 @@ final class RepairController extends AbstractController
         }
 
         return $this->redirectToRoute('app_repair_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/{id}/finish', name: 'app_repair_finish', methods: ['GET', 'POST'])]
+    public function return(Request $request, Repair $repair, EntityManagerInterface $entityManager): Response
+    {
+        // Vérifier que l'historique n'ai pas déjà été retourné
+        if ($repair->isDone()) {
+            $this->addFlash('error', 'This repair has already been done.');
+            return $this->redirectToRoute('app_repair_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        $form = $this->createForm(FinishRepairType::class, $repair);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $product = $repair->getProduct();
+            $repair->setDone(true);
+
+            $entityManager->persist($repair);
+            $entityManager->persist($product);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_repair_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        // Rendre la vue avec le formulaire
+        return $this->render('repair/finish.html.twig', [
+            'repair' => $repair,
+            'form' => $form,
+        ]);
     }
 }
