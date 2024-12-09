@@ -21,6 +21,9 @@ class FinishRepairType extends AbstractType
                 'mapped' => false,
                 'label' => 'Condition du produit'
             ])
+            ->add('date', null, [
+                'widget' => 'single_text',
+            ])
         ;
     }
 

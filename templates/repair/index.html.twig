@@ -10,7 +10,7 @@
 {% block body %}
     <h1>Repair index</h1>
 
-    <table class="table">
+    <table class="table" class="table table-stripped table-bordered" id="myTable">
         <thead>
             <tr>
                 <th>Id</th>
@@ -35,7 +35,7 @@
                     {% if repair.isDone == false %}
                         <a href="{{ path('app_repair_finish', {'id': repair.id })}}">finish</a>
                     {% else %}
-                        <p>Product already repared</p>
+                        <p>Repairs already done</p>
                     {% endif %}
                 </td>
             </tr>
