@@ -21,7 +21,9 @@ class ProductRepository extends ServiceEntityRepository
     {
         return (int) $this->createQueryBuilder('product')
             ->select('COUNT(product.id)')
-            ->where('product.condition_state = 17')
+            ->join('product.condition_state', 'condition')
+            ->where('condition.condition_name = :name')
+            ->setParameter('name', 'Broken')
             ->getQuery()
             ->getSingleScalarResult();
     }

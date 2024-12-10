@@ -22,14 +22,6 @@ final class ProductController extends AbstractController
         ]);
     }
 
-    /*#[Route('/dashboard', name: 'app_product_dashboard', methods: ['GET'])]
-    public function dashboard(ProductRepository $productRepository): Response
-    {
-        return $this->render('product/dashboard.html.twig', [
-            'productCount' => $productRepository->countAll(),
-        ]);
-    }*/
-
     #[Route('/new', name: 'app_product_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
