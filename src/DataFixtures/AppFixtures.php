@@ -32,7 +32,7 @@ class AppFixtures extends Fixture
         $conditions = [];
         $locations = [];
         $products = [];
-        $condition_names = ['tout cassé','moyen cassé','un peu cassé','neuf'];
+        $condition_names = ['Broken','Used','Good','Mint'];
         $sections_names = ['section alpha','section beta','section delta'];
         $shelves_names = ['étagère n°1','étagère n°2','étagère n°3'];
 

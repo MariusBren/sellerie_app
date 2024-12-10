@@ -16,6 +16,7 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
+    // Récupérer le nombre de produits cassés
     public function countBroken(): int
     {
         return (int) $this->createQueryBuilder('product')

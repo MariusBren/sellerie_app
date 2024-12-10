@@ -11,7 +11,7 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6 w-full max-w-6xl">
         <div class="bg-zinc-800 rounded-lg shadow p-6 text-center">
-            <h2 class="text-lg font-medium text-white">Nombre de produits</h2>
+            <h2 class="text-lg font-medium text-white">Nombre de produits total</h2>
             <p class="text-3xl font-bold text-indigo-400 mt-2">{{ productAllCount }}</p>
         </div>
         <div class="bg-zinc-800 rounded-lg shadow p-6 text-center">
@@ -20,7 +20,7 @@
         </div>
         <div class="bg-zinc-800 rounded-lg shadow p-6 text-center">
             <h2 class="text-lg font-medium text-white">Nombre de prêts total</h2>
-            <p class="text-3xl font-bold text-green-400 mt-2">{{ historyAllCount }}</p>
+            <p class="text-3xl font-bold text-blue-400 mt-2">{{ historyAllCount }}</p>
         </div>
         <div class="bg-zinc-800 rounded-lg shadow p-6 text-center">
             <h2 class="text-lg font-medium text-white">Nombre de prêts en cours</h2>
@@ -31,8 +31,32 @@
             <p class="text-3xl font-bold text-red-400 mt-2">{{ historyLateCount }}</p>
         </div>
         <div class="bg-zinc-800 rounded-lg shadow p-6 text-center">
+            <h2 class="text-lg font-medium text-white">Nombre de prêts terminés</h2>
+            <p class="text-3xl font-bold text-green-400 mt-2">{{ historyBackCount }}</p>
+        </div>
+        <div class="bg-zinc-800 rounded-lg shadow p-6 text-center">
             <h2 class="text-lg font-medium text-white">Nombre de catégories</h2>
             <p class="text-3xl font-bold text-blue-400 mt-2">{{ categoryAllCount }}</p>
+        </div>
+        <div class="bg-zinc-800 rounded-lg shadow p-6 text-center">
+            <h2 class="text-lg font-medium text-white">Nombre de réparations total</h2>
+            <p class="text-3xl font-bold text-blue-400 mt-2">{{ repairAllCount }}</p>
+        </div>
+        <div class="bg-zinc-800 rounded-lg shadow p-6 text-center">
+            <h2 class="text-lg font-medium text-white">Nombre de réparations prévues</h2>
+            <p class="text-3xl font-bold text-yellow-400 mt-2">{{ repairToDoCount }}</p>
+        </div>
+        <div class="bg-zinc-800 rounded-lg shadow p-6 text-center">
+            <h2 class="text-lg font-medium text-white">Coût total des réparations prévues</h2>
+            <p class="text-3xl font-bold text-indigo-400 mt-2">{{ repairToDoCost }} €</p>
+        </div>
+        <div class="bg-zinc-800 rounded-lg shadow p-6 text-center">
+            <h2 class="text-lg font-medium text-white">Nombre de réparations terminées</h2>
+            <p class="text-3xl font-bold text-green-400 mt-2">{{ repairDoneCount }}</p>
+        </div>
+        <div class="bg-zinc-800 rounded-lg shadow p-6 text-center">
+            <h2 class="text-lg font-medium text-white">Nombre de réparations en retard</h2>
+            <p class="text-3xl font-bold text-red-400 mt-2">{{ repairLateCount }}</p>
         </div>
     </div>
 </div>
