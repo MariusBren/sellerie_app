@@ -64,6 +64,34 @@
         </tbody>
     </table>
 
+    <h2>Last tracked repairs</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Is finished ?</th>
+                <th>Description</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for repair in product.getRepairs() %}
+                <tr>
+                    <td>{{ repair.isDone ? 'Yes' : 'No' }}</td>
+                    <td>{{ repair.description }}</td>
+                    <td>{{ repair.date|date('Y-m-d') }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">No repairs found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if history.isBack == false %}
+        <a href="{{ path('app_repair_finish', {'id': repair.id })}}">return</a>
+    {% endif %}
+
     <a class="back-btn" href="{{ path('app_product_index') }}">back to list</a>
 
     <a class="edit-btn" href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a>

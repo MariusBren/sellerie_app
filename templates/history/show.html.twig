@@ -16,6 +16,10 @@
                 <td>{{ history.id }}</td>
             </tr>
             <tr>
+                <th>Product</th>
+                <td><a href="{{ path('app_product_show', {'id': history.getProduct().getId()}) }}">{{ history.getProduct().getProductName() }}</a></td>
+            </tr>
+            <tr>
                 <th>Description</th>
                 <td>{{ history.description }}</td>
             </tr>
@@ -40,8 +44,6 @@
 
     {% if history.isBack == false %}
         <a href="{{ path('app_history_return', {'id': history.id })}}">return</a>
-    {% else %}
-        <p>Product already returned</p>
     {% endif %}
 
     <a class="back-btn" href="{{ path('app_history_index') }}">back to list</a>

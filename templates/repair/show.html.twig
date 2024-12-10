@@ -16,6 +16,10 @@
                 <td>{{ repair.id }}</td>
             </tr>
             <tr>
+                <th>Product</th>
+                <td><a href="{{ path('app_product_show', {'id': repair.getProduct().getId()}) }}">{{ repair.getProduct().getProductName() }}</a></td>
+            </tr>
+            <tr>
                 <th>Date</th>
                 <td>{{ repair.date ? repair.date|date('Y-m-d') : '' }}</td>
             </tr>

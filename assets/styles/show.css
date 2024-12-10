@@ -84,7 +84,7 @@ form button:hover {
     background-color: #c0392b;
 }
 
-.back-btn {
+.back-btn, p {
     margin-bottom: 20px;
     margin-left: 5%;
 }

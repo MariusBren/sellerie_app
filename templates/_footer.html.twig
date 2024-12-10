@@ -12,8 +12,13 @@
                         <a href="#" class="hover:text-emerald-400 me-4 md:me-6">Licensing</a>
                     </li>
                     <li>
-                        <a href="#" class="hover:text-emerald-400">Contact</a>
+                        <a href="#" class="hover:text-emerald-400 me-4 md:me-6">Contact</a>
                     </li>
+                    {% if app.user and is_granted('ROLE_ADMIN') %}
+                    <li>
+                        <a href="{{ path('app_condition_index') }}" class="hover:text-emerald-400">Gestion des conditions</a>
+                    </li>
+                    {% endif %}
                 </ul>
             </div>
             <hr class="my-6 sm:mx-auto border-gray-700 lg:my-8" />
