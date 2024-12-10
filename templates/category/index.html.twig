@@ -25,7 +25,10 @@
                 <td>{{ category.categoryName }}</td>
                 <td>
                     <a href="{{ path('app_category_show', {'id': category.id}) }}">show</a>
-                    <a href="{{ path('app_category_edit', {'id': category.id}) }}">edit</a>
+                    
+                    {% if app.user and is_granted('ROLE_USER') %}
+                        <a href="{{ path('app_category_edit', {'id': category.id}) }}">edit</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}

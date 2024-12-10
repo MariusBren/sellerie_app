@@ -22,6 +22,28 @@
         </tbody>
     </table>
 
+    <h2>Last registered products in category</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name<th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in category.getProducts()|slice(0, 5) %}
+                <tr>
+                    <td><a href="{{ path('app_product_show', {'id': product.id}) }}">{{ product.productName }}</a></td>
+                    <td>{{ product.description }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">No histories found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
     <a class="back-btn" href="{{ path('app_category_index') }}">back to list</a>
 
     <a class="edit-btn" href="{{ path('app_category_edit', {'id': category.id}) }}">edit</a>

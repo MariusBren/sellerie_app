@@ -15,7 +15,7 @@
                             <li class="md:px-4 md:py-2 hover:text-emerald-400"><a href="{{ path('app_dashboard') }}">Dashboard</a></li>
                         {% endif %}
                         {% if app.user and is_granted('ROLE_ADMIN') %}
-                            <li class="md:px-4 md:py-2 hover:text-emerald-400"><a href="{{ path('app_dashboard') }}">Utilisateurs</a></li>
+                            <li class="md:px-4 md:py-2 hover:text-emerald-400"><a href="{{ path('app_user') }}">Utilisateurs</a></li>
                         {% endif %}
                     </ul>
                 </div>

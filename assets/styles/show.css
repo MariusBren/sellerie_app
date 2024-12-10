@@ -1,4 +1,4 @@
-h1 {
+h1, h2 {
     text-align: center;
     margin: 15px 0;
     font-size: 2em;
@@ -35,19 +35,15 @@ h1 {
 }
 
 .table td a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
+    color: #555;
+    text-decoration: underline;
     display: inline-block;
-    padding: 6px 12px;
-    border-radius: 4px;
-    background-color: rgb(16 185 129);
-    font-size: 0.85em;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    padding: 8px;
+    font-size: 1em;
 }
 
 .table td a:hover {
-    background-color: rgb(5 150 105);
+    color: rgb(5 150 105);
 }
 
 body > a, .edit-btn {

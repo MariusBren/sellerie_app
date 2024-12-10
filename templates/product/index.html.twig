@@ -31,7 +31,9 @@
                 <td>{{ product.getLocation().getSection() }}, {{ product.getLocation().getShelf() }}</td>
                 <td>
                     <a href="{{ path('app_product_show', {'id': product.id}) }}">show</a>
-                    <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a>
+                    {% if app.user and is_granted('ROLE_USER') %}
+                        <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
