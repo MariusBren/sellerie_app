@@ -95,7 +95,15 @@ final class RepairController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $product = $repair->getProduct();
+
+            // Définir la réparation comme terminée
             $repair->setDone(true);
+
+            // MAJ la condition du produit
+            $newConditionState = $form->get('condition_state')->getData();
+            if ($newConditionState) {
+                $product->setConditionState($newConditionState);
+            }
 
             $entityManager->persist($repair);
             $entityManager->persist($product);

@@ -88,10 +88,6 @@
         </tbody>
     </table>
 
-    {% if history.isBack == false %}
-        <a href="{{ path('app_repair_finish', {'id': repair.id })}}">return</a>
-    {% endif %}
-
     <a class="back-btn" href="{{ path('app_product_index') }}">back to list</a>
 
     <a class="edit-btn" href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a>

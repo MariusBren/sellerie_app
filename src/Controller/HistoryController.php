@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\History;
+use App\Entity\Repair;
 use App\Form\HistoryType;
 use App\Form\ReturnHistoryType;
 use App\Repository\HistoryRepository;
@@ -95,7 +96,28 @@ final class HistoryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $product = $history->getProduct();
+
+            // Définir le prêt comme retourné
             $history->setBack(true);
+
+            // MAJ la condition du produit
+            $newConditionState = $form->get('condition_state')->getData();
+            if ($newConditionState) {
+                $product->setConditionState($newConditionState);
+            }
+
+            // Vérifier si la case de génération de réparation automatique a été cochée
+            if ($form->get('create_repair')->getData()) {
+                // Créer une réparation générique
+                $repair = new Repair();
+                $repair->setProduct($history->getProduct());
+                $repair->setDescription('Maintenance de retour');
+                $repair->setCost(100);
+                $repair->setDate((new \DateTime())->modify('+1 week'));
+                $repair->setDone(false);
+    
+                $entityManager->persist($repair);
+            }
 
             $entityManager->persist($history);
             $entityManager->persist($product);
