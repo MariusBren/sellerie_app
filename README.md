@@ -25,3 +25,6 @@
   
 9) Accéder au projet sur navigateur via l'addresse suivante :  
   `http://127.0.0.1:8000`
+
+10) [optionnel] Parcourir le guide d'utilisation du projet :  
+  `https://www.canva.com/design/DAGZZS_kuvc/9Nd0IxpruaERhcSIX5qjrA/edit?utm_content=DAGZZS_kuvc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton`
