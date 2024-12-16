@@ -50,7 +50,9 @@
         </tbody>
     </table>
 
-    <a class="index-create" href="{{ path('app_history_new') }}">Create new</a>
+    {% if app.user and is_granted('ROLE_USER') %}
+        <a class="index-create" href="{{ path('app_history_new') }}">Create new</a>
+    {% endif %}
 {% endblock %}
 
 {% block javascripts %}

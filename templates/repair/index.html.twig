@@ -14,6 +14,7 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Product</th>
                 <th>Date</th>
                 <th>Description</th>
                 <th>Cost</th>
@@ -25,6 +26,7 @@
         {% for repair in repairs %}
             <tr>
                 <td>{{ repair.id }}</td>
+                <td>{{ repair.getProduct().getProductName() }}</td>
                 <td>{{ repair.date ? repair.date|date('Y-m-d') : '' }}</td>
                 <td>{{ repair.description }}</td>
                 <td>{{ repair.cost }}</td>
@@ -47,7 +49,9 @@
         </tbody>
     </table>
 
-    <a class="index-create" href="{{ path('app_repair_new') }}">Create new</a>
+    {% if app.user and is_granted('ROLE_USER') %}
+        <a class="index-create" href="{{ path('app_repair_new') }}">Create new</a>
+    {% endif %}
 {% endblock %}
 
 {% block javascripts %}
