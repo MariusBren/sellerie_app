@@ -39,7 +39,7 @@ security:
         - { path: ^/user, roles: ROLE_ADMIN }
         - { path: ^/history, roles: ROLE_USER }
         - { path: ^/repair, roles: ROLE_USER }
-        - { path: ^/condition, roles: ROLE_USER }
+        - { path: ^/condition, roles: ROLE_ADMIN }
         - { path: ^/location, roles: ROLE_USER }
         - { path: ^/dashboard, roles: ROLE_USER }
         - { path: ^/category/create, roles: ROLE_USER }

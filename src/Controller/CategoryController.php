@@ -72,8 +72,13 @@ final class CategoryController extends AbstractController
     public function delete(Request $request, Category $category, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->getPayload()->getString('_token'))) {
-            $entityManager->remove($category);
-            $entityManager->flush();
+            try {
+                $entityManager->remove($category);
+                $entityManager->flush();
+            } catch (\Exception $e) {
+                $this->addFlash('error', 'Unable to delete category: ' . $e->getMessage());
+                return $this->redirectToRoute('app_category_index', [], Response::HTTP_SEE_OTHER);
+            }
         }
 
         return $this->redirectToRoute('app_category_index', [], Response::HTTP_SEE_OTHER);

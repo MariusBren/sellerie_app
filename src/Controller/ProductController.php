@@ -72,9 +72,20 @@ final class ProductController extends AbstractController
     public function delete(Request $request, Product $product, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->getPayload()->getString('_token'))) {
+            // Suppression des historiques
+            foreach ($product->getHistories() as $history) {
+                $entityManager->remove($history);
+            }
+
+            // Suppression des réparations
+            foreach ($product->getRepairs() as $repair) {
+                $entityManager->remove($repair);
+            }
+
+            // Suppression du produit
             $entityManager->remove($product);
             $entityManager->flush();
-        }
+            }
 
         return $this->redirectToRoute('app_product_index', [], Response::HTTP_SEE_OTHER);
     }
